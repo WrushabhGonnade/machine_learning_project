@@ -117,7 +117,7 @@ class DataIngestion:
             return data_ingestion_artifact
 
         except Exception as e:
-            raise HousingException(e,sys) from 
+            raise HousingException(e,sys) from e
 
 
     def initiate_data_ingestion(self)->DataIngestionArtifact:
