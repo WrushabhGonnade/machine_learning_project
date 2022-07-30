@@ -1,13 +1,12 @@
-import logging
-from housing.entity.artifact_entity import DataIngestionArtifact
 from housing.entity.config_entity import DataIngestionConfig
 import sys,os
 from housing.exception import HousingException
+from housing.logger import logging
 from housing.entity.artifact_entity import DataIngestionArtifact
-import tarfile # to extract zip file
-from six.moves import urllib # For downloading data and above line is for extracting that downloaded data
-import pandas as pd
+import tarfile
 import numpy as np
+from six.moves import urllib
+import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 
 
@@ -29,8 +28,7 @@ class DataIngestion:
             # Getting the folder location to download the file
             tgz_download_dir=self.data_ingestion_config.tgz_download_dir
             
-            if os.path.exists(tgz_download_dir):
-                os.remove(tgz_download_dir)
+           
             os.makedirs(tgz_download_dir,exist_ok=True)
 
             # To extract the file name from file download url 
@@ -124,6 +122,7 @@ class DataIngestion:
         try:
             tgz_file_path=self.download_housing_data()
             self.extract_tgz_file(tgz_file_path=tgz_file_path)
+            return self.split_data_as_train_test()
         except Exception as e:
             raise HousingException(e,sys) from e
 
