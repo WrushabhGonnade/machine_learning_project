@@ -1,3 +1,4 @@
+from housing.config.configuration import Configuration
 from housing.exception import HousingException
 from housing.pipeline.pipeline import Pipeline
 from housing.exception import HousingException
@@ -7,6 +8,8 @@ def main():
     try:
         pipeline=Pipeline()
         pipeline.run_pipeline()
+        #data_validation_config=Configuration().get_data_transformation_config()
+        #print(data_validation_config)
     except Exception as e:
         logging.error(f"{e}")
         print(e)
