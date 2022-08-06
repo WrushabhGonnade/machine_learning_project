@@ -28,10 +28,10 @@ data_transformation_config:
   preprocessed_object_file_name: preprocessed.pkl
   
 model_trainer_config:
-  trained_model_dir: trained_model
-  model_file_name: model.pkl
-  base_accuracy: 0.6
-  model_config_dir: config
+  trained_model_dir: trained_model # Here i have to save my model
+  model_file_name: model.pkl # My Model name
+  base_accuracy: 0.6 # Accuracy should be 60% to accept model
+  model_config_dir: config 
   model_config_file_name: model.yaml
 
 
